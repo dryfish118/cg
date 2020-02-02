@@ -1,5 +1,5 @@
 ﻿
-// dda.h: dda 应用程序的主头文件
+// base.h: base 应用程序的主头文件
 //
 #pragma once
 
@@ -10,14 +10,14 @@
 #include "resource.h"       // 主符号
 
 
-// CddaApp:
-// 有关此类的实现，请参阅 dda.cpp
+// CbaseApp:
+// 有关此类的实现，请参阅 base.cpp
 //
 
-class CddaApp : public CWinApp
+class CbaseApp : public CWinApp
 {
 public:
-	CddaApp() noexcept;
+	CbaseApp() noexcept;
 
 
 // 重写
@@ -29,4 +29,4 @@ public:
 	DECLARE_MESSAGE_MAP()
 };
 
-extern CddaApp theApp;
+extern CbaseApp theApp;

@@ -1,52 +1,52 @@
 ﻿
-// dda.cpp: 定义应用程序的类行为。
+// base.cpp: 定义应用程序的类行为。
 //
 
 #include "pch.h"
 #include "framework.h"
 #include "afxwinappex.h"
 #include "afxdialogex.h"
-#include "dda.h"
+#include "base.h"
 #include "MainFrm.h"
 
-#include "ddaDoc.h"
-#include "ddaView.h"
+#include "baseDoc.h"
+#include "baseView.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// CddaApp
+// CbaseApp
 
-BEGIN_MESSAGE_MAP(CddaApp, CWinApp)
-	ON_COMMAND(ID_APP_ABOUT, &CddaApp::OnAppAbout)
+BEGIN_MESSAGE_MAP(CbaseApp, CWinApp)
+	ON_COMMAND(ID_APP_ABOUT, &CbaseApp::OnAppAbout)
 	// 基于文件的标准文档命令
 	ON_COMMAND(ID_FILE_NEW, &CWinApp::OnFileNew)
 	ON_COMMAND(ID_FILE_OPEN, &CWinApp::OnFileOpen)
 END_MESSAGE_MAP()
 
 
-// CddaApp 构造
+// CbaseApp 构造
 
-CddaApp::CddaApp() noexcept
+CbaseApp::CbaseApp() noexcept
 {
 	// TODO: 将以下应用程序 ID 字符串替换为唯一的 ID 字符串；建议的字符串格式
 	//为 CompanyName.ProductName.SubProduct.VersionInformation
-	SetAppID(_T("dda.AppID.NoVersion"));
+	SetAppID(_T("base.AppID.NoVersion"));
 
 	// TODO: 在此处添加构造代码，
 	// 将所有重要的初始化放置在 InitInstance 中
 }
 
-// 唯一的 CddaApp 对象
+// 唯一的 CbaseApp 对象
 
-CddaApp theApp;
+CbaseApp theApp;
 
 
-// CddaApp 初始化
+// CbaseApp 初始化
 
-BOOL CddaApp::InitInstance()
+BOOL CbaseApp::InitInstance()
 {
 	// 如果一个运行在 Windows XP 上的应用程序清单指定要
 	// 使用 ComCtl32.dll 版本 6 或更高版本来启用可视化方式，
@@ -82,9 +82,9 @@ BOOL CddaApp::InitInstance()
 	CSingleDocTemplate* pDocTemplate;
 	pDocTemplate = new CSingleDocTemplate(
 		IDR_MAINFRAME,
-		RUNTIME_CLASS(CddaDoc),
+		RUNTIME_CLASS(CbaseDoc),
 		RUNTIME_CLASS(CMainFrame),       // 主 SDI 框架窗口
-		RUNTIME_CLASS(CddaView));
+		RUNTIME_CLASS(CbaseView));
 	if (!pDocTemplate)
 		return FALSE;
 	AddDocTemplate(pDocTemplate);
@@ -107,7 +107,7 @@ BOOL CddaApp::InitInstance()
 	return TRUE;
 }
 
-// CddaApp 消息处理程序
+// CbaseApp 消息处理程序
 
 
 // 用于应用程序“关于”菜单项的 CAboutDlg 对话框
@@ -143,13 +143,13 @@ BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
 END_MESSAGE_MAP()
 
 // 用于运行对话框的应用程序命令
-void CddaApp::OnAppAbout()
+void CbaseApp::OnAppAbout()
 {
 	CAboutDlg aboutDlg;
 	aboutDlg.DoModal();
 }
 
-// CddaApp 消息处理程序
+// CbaseApp 消息处理程序
 
 
 

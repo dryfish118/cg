@@ -15,9 +15,6 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="dda.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
     <ClInclude Include="framework.h">
       <Filter>头文件</Filter>
     </ClInclude>
@@ -25,12 +22,6 @@
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="MainFrm.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ddaDoc.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="ddaView.h">
       <Filter>头文件</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
@@ -42,18 +33,18 @@
     <ClInclude Include="ViewDrawDevice.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="base.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="baseDoc.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="baseView.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="dda.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
     <ClCompile Include="MainFrm.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ddaDoc.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="ddaView.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp">
@@ -62,26 +53,35 @@
     <ClCompile Include="ViewDrawDevice.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="base.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="baseDoc.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="baseView.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ResourceCompile Include="dda.rc">
+    <Image Include="res\Toolbar.bmp">
       <Filter>资源文件</Filter>
-    </ResourceCompile>
+    </Image>
+    <Image Include="res\base.ico">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\baseDoc.ico">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
-    <None Include="res\dda.rc2">
+    <None Include="res\base.rc2">
       <Filter>资源文件</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Image Include="res\ddaDoc.ico">
+    <ResourceCompile Include="base.rc">
       <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="res\dda.ico">
-      <Filter>资源文件</Filter>
-    </Image>
-    <Image Include="res\Toolbar.bmp">
-      <Filter>资源文件</Filter>
-    </Image>
+    </ResourceCompile>
   </ItemGroup>
 </Project>

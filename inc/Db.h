@@ -4,5 +4,7 @@
 #include "pre.h"
 #include "DbObject.h"
 #include "DbLine.h"
+#include "DbDDALine.h"
+#include "DbBresenhamLine.h"
 
 #endif

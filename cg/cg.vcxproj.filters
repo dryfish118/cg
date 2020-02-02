@@ -52,6 +52,12 @@
     <ClInclude Include="..\inc\GePoint.h">
       <Filter>inc\ge</Filter>
     </ClInclude>
+    <ClInclude Include="..\inc\DbBresenhamLine.h">
+      <Filter>inc\db</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\DbDDALine.h">
+      <Filter>inc\db</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ge\GeLine.cpp">
@@ -70,5 +76,11 @@
       <Filter>db</Filter>
     </ClCompile>
     <ClCompile Include="pch.cpp" />
+    <ClCompile Include="db\DbBresenhamLine.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\DbDDALine.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

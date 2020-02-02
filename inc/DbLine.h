@@ -9,8 +9,6 @@ public:
 	CDbLine();
 	CDbLine(const CGePoint& ptStart, const CGePoint& ptEnd);
 
-	virtual void onDraw(CDrawDevice* dd);
-
 public:
 	CGeLine m_line;
 };

@@ -1,19 +1,19 @@
 ﻿
-// ddaDoc.h: CddaDoc 类的接口
+// baseDoc.h: CbaseDoc 类的接口
 //
 
 
 #pragma once
 
-#include "ddaView.h"
+#include "baseView.h"
 
-class CddaDoc
+class CbaseDoc
 	: public CDocument
 	, public CGetPointCallback
 {
 protected: // 仅从序列化创建
-	CddaDoc() noexcept;
-	DECLARE_DYNCREATE(CddaDoc)
+	CbaseDoc() noexcept;
+	DECLARE_DYNCREATE(CbaseDoc)
 
 // 特性
 public:
@@ -34,7 +34,7 @@ public:
 
 // 实现
 public:
-	virtual ~CddaDoc();
+	virtual ~CbaseDoc();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
@@ -44,8 +44,10 @@ protected:
 	enum State
 	{
 		kNone,
-		kGetFirstPoint,
-		kGetSecondPoint,
+		kGetDDAFirstPoint,
+		kGetDDASecondPoint,
+		kGetBresenhamFirstPoint,
+		kGetBresenhamSecondPoint,
 	};
 	State m_state;
 	CGePoint m_point;
@@ -59,5 +61,6 @@ protected:
 	void SetSearchContent(const CString& value);
 #endif // SHARED_HANDLERS
 public:
-	afx_msg void OnLineDda();
+	afx_msg void OnLineDDA();
+	afx_msg void OnLineBresenham();
 };

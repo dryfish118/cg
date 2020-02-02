@@ -4,7 +4,7 @@
 class CViewDrawDevice : public CDrawDevice
 {
 public:
-	virtual void drawPoint(const CGePoint& pnt);
+	virtual void drawPoint(double x, double y);
 
 public:
 	int m_cols;

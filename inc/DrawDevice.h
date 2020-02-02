@@ -6,7 +6,7 @@ class CG_EXPORT CDrawDevice
 public:
 	virtual ~CDrawDevice();
 
-	virtual void drawPoint(const CGePoint& pnt) = 0;
+	virtual void drawPoint(double x, double y) = 0;
 };
 
 

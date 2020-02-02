@@ -1,10 +1,10 @@
 ﻿
-// ddaView.h: CddaView 类的接口
+// baseView.h: CbaseView 类的接口
 //
 
 #pragma once
 
-class CddaDoc;
+class CbaseDoc;
 
 class CGetPointCallback
 {
@@ -12,15 +12,15 @@ public:
 	virtual void onGetPoint(const CGePoint& pnt) = 0;
 };
 
-class CddaView : public CView
+class CbaseView : public CView
 {
 protected: // 仅从序列化创建
-	CddaView() noexcept;
-	DECLARE_DYNCREATE(CddaView)
+	CbaseView() noexcept;
+	DECLARE_DYNCREATE(CbaseView)
 
 // 特性
 public:
-	CddaDoc* GetDocument() const;
+	CbaseDoc* GetDocument() const;
 
 // 操作
 public:
@@ -34,7 +34,7 @@ protected:
 
 // 实现
 public:
-	virtual ~CddaView();
+	virtual ~CbaseView();
 #ifdef _DEBUG
 	virtual void AssertValid() const;
 	virtual void Dump(CDumpContext& dc) const;
@@ -54,8 +54,8 @@ public:
 	afx_msg void OnKillFocus(CWnd* pNewWnd);
 };
 
-#ifndef _DEBUG  // ddaView.cpp 中的调试版本
-inline CddaDoc* CddaView::GetDocument() const
-   { return reinterpret_cast<CddaDoc*>(m_pDocument); }
+#ifndef _DEBUG  // baseView.cpp 中的调试版本
+inline CbaseDoc* CbaseView::GetDocument() const
+   { return reinterpret_cast<CbaseDoc*>(m_pDocument); }
 #endif
 

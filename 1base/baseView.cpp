@@ -1,5 +1,5 @@
 ﻿
-// ddaView.cpp: CddaView 类的实现
+// baseView.cpp: CbaseView 类的实现
 //
 
 #include "pch.h"
@@ -7,31 +7,31 @@
 // SHARED_HANDLERS 可以在实现预览、缩略图和搜索筛选器句柄的
 // ATL 项目中进行定义，并允许与该项目共享文档代码。
 #ifndef SHARED_HANDLERS
-#include "dda.h"
+#include "base.h"
 #endif
 
-#include "ddaDoc.h"
-#include "ddaView.h"
+#include "baseDoc.h"
+#include "baseView.h"
 
 #ifdef _DEBUG
 #define new DEBUG_NEW
 #endif
 
 
-// CddaView
+// CbaseView
 
-IMPLEMENT_DYNCREATE(CddaView, CView)
+IMPLEMENT_DYNCREATE(CbaseView, CView)
 
-BEGIN_MESSAGE_MAP(CddaView, CView)
+BEGIN_MESSAGE_MAP(CbaseView, CView)
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
 	ON_WM_MOUSEMOVE()
 	ON_WM_KILLFOCUS()
 END_MESSAGE_MAP()
 
-// CddaView 构造/析构
+// CbaseView 构造/析构
 
-CddaView::CddaView() noexcept
+CbaseView::CbaseView() noexcept
 	: m_lButtonDown(false)
 	, m_cb(NULL)
 {
@@ -39,11 +39,11 @@ CddaView::CddaView() noexcept
 
 }
 
-CddaView::~CddaView()
+CbaseView::~CbaseView()
 {
 }
 
-BOOL CddaView::PreCreateWindow(CREATESTRUCT& cs)
+BOOL CbaseView::PreCreateWindow(CREATESTRUCT& cs)
 {
 	// TODO: 在此处通过修改
 	//  CREATESTRUCT cs 来修改窗口类或样式
@@ -51,13 +51,13 @@ BOOL CddaView::PreCreateWindow(CREATESTRUCT& cs)
 	return CView::PreCreateWindow(cs);
 }
 
-// CddaView 绘图
+// CbaseView 绘图
 
 #include "ViewDrawDevice.h"
 
-void CddaView::OnDraw(CDC* pDC)
+void CbaseView::OnDraw(CDC* pDC)
 {
-	CddaDoc* pDoc = GetDocument();
+	CbaseDoc* pDoc = GetDocument();
 	ASSERT_VALID(pDoc);
 	if (!pDoc)
 		return;
@@ -89,36 +89,36 @@ void CddaView::OnDraw(CDC* pDC)
 }
 
 
-// CddaView 诊断
+// CbaseView 诊断
 
 #ifdef _DEBUG
-void CddaView::AssertValid() const
+void CbaseView::AssertValid() const
 {
 	CView::AssertValid();
 }
 
-void CddaView::Dump(CDumpContext& dc) const
+void CbaseView::Dump(CDumpContext& dc) const
 {
 	CView::Dump(dc);
 }
 
-CddaDoc* CddaView::GetDocument() const // 非调试版本是内联的
+CbaseDoc* CbaseView::GetDocument() const // 非调试版本是内联的
 {
-	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CddaDoc)));
-	return (CddaDoc*)m_pDocument;
+	ASSERT(m_pDocument->IsKindOf(RUNTIME_CLASS(CbaseDoc)));
+	return (CbaseDoc*)m_pDocument;
 }
 #endif //_DEBUG
 
 
-// CddaView 消息处理程序
+// CbaseView 消息处理程序
 
-void CddaView::getPoint(CGetPointCallback* cb)
+void CbaseView::getPoint(CGetPointCallback* cb)
 {
 	m_cb = cb;
 }
 
 
-void CddaView::OnLButtonDown(UINT nFlags, CPoint point)
+void CbaseView::OnLButtonDown(UINT nFlags, CPoint point)
 {
 	if (m_cb)
 	{
@@ -132,7 +132,7 @@ void CddaView::OnLButtonDown(UINT nFlags, CPoint point)
 }
 
 
-void CddaView::OnLButtonUp(UINT nFlags, CPoint point)
+void CbaseView::OnLButtonUp(UINT nFlags, CPoint point)
 {
 	ReleaseCapture();
 
@@ -161,7 +161,7 @@ void CddaView::OnLButtonUp(UINT nFlags, CPoint point)
 }
 
 
-void CddaView::OnMouseMove(UINT nFlags, CPoint point)
+void CbaseView::OnMouseMove(UINT nFlags, CPoint point)
 {
 	if (m_lButtonDown)
 	{
@@ -175,7 +175,7 @@ void CddaView::OnMouseMove(UINT nFlags, CPoint point)
 }
 
 
-void CddaView::OnKillFocus(CWnd* pNewWnd)
+void CbaseView::OnKillFocus(CWnd* pNewWnd)
 {
 	CView::OnKillFocus(pNewWnd);
 

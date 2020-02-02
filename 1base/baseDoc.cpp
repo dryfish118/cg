@@ -1,5 +1,5 @@
 ﻿
-// ddaDoc.cpp: CddaDoc 类的实现
+// baseDoc.cpp: CbaseDoc 类的实现
 //
 
 #include "pch.h"
@@ -7,10 +7,10 @@
 // SHARED_HANDLERS 可以在实现预览、缩略图和搜索筛选器句柄的
 // ATL 项目中进行定义，并允许与该项目共享文档代码。
 #ifndef SHARED_HANDLERS
-#include "dda.h"
+#include "base.h"
 #endif
 
-#include "ddaDoc.h"
+#include "baseDoc.h"
 
 #include <propkey.h>
 
@@ -18,25 +18,26 @@
 #define new DEBUG_NEW
 #endif
 
-// CddaDoc
+// CbaseDoc
 
-IMPLEMENT_DYNCREATE(CddaDoc, CDocument)
+IMPLEMENT_DYNCREATE(CbaseDoc, CDocument)
 
-BEGIN_MESSAGE_MAP(CddaDoc, CDocument)
-	ON_COMMAND(ID_LINE_DDA, &CddaDoc::OnLineDda)
+BEGIN_MESSAGE_MAP(CbaseDoc, CDocument)
+	ON_COMMAND(ID_LINE_DDA, &CbaseDoc::OnLineDDA)
+	ON_COMMAND(ID_LINE_BRESENHAM, &CbaseDoc::OnLineBresenham)
 END_MESSAGE_MAP()
 
 
-// CddaDoc 构造/析构
+// CbaseDoc 构造/析构
 
-CddaDoc::CddaDoc() noexcept
+CbaseDoc::CbaseDoc() noexcept
 	: m_state(kNone)
 {
 	// TODO: 在此添加一次性构造代码
 
 }
 
-CddaDoc::~CddaDoc()
+CbaseDoc::~CbaseDoc()
 {
 	for (ObjectIt it = m_objects.begin(); it != m_objects.end(); it++)
 	{
@@ -45,7 +46,7 @@ CddaDoc::~CddaDoc()
 	m_objects.clear();
 }
 
-BOOL CddaDoc::OnNewDocument()
+BOOL CbaseDoc::OnNewDocument()
 {
 	if (!CDocument::OnNewDocument())
 		return FALSE;
@@ -59,9 +60,9 @@ BOOL CddaDoc::OnNewDocument()
 
 
 
-// CddaDoc 序列化
+// CbaseDoc 序列化
 
-void CddaDoc::Serialize(CArchive& ar)
+void CbaseDoc::Serialize(CArchive& ar)
 {
 	if (ar.IsStoring())
 	{
@@ -76,7 +77,7 @@ void CddaDoc::Serialize(CArchive& ar)
 #ifdef SHARED_HANDLERS
 
 // 缩略图的支持
-void CddaDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
+void CbaseDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 {
 	// 修改此代码以绘制文档数据
 	dc.FillSolidRect(lprcBounds, RGB(255, 255, 255));
@@ -97,7 +98,7 @@ void CddaDoc::OnDrawThumbnail(CDC& dc, LPRECT lprcBounds)
 }
 
 // 搜索处理程序的支持
-void CddaDoc::InitializeSearchContent()
+void CbaseDoc::InitializeSearchContent()
 {
 	CString strSearchContent;
 	// 从文档数据设置搜索内容。
@@ -107,7 +108,7 @@ void CddaDoc::InitializeSearchContent()
 	SetSearchContent(strSearchContent);
 }
 
-void CddaDoc::SetSearchContent(const CString& value)
+void CbaseDoc::SetSearchContent(const CString& value)
 {
 	if (value.IsEmpty())
 	{
@@ -127,46 +128,70 @@ void CddaDoc::SetSearchContent(const CString& value)
 
 #endif // SHARED_HANDLERS
 
-// CddaDoc 诊断
+// CbaseDoc 诊断
 
 #ifdef _DEBUG
-void CddaDoc::AssertValid() const
+void CbaseDoc::AssertValid() const
 {
 	CDocument::AssertValid();
 }
 
-void CddaDoc::Dump(CDumpContext& dc) const
+void CbaseDoc::Dump(CDumpContext& dc) const
 {
 	CDocument::Dump(dc);
 }
 #endif //_DEBUG
 
 
-// CddaDoc 命令
+// CbaseDoc 命令
 
-void CddaDoc::OnLineDda()
+void CbaseDoc::OnLineDDA()
 {
-	m_state = kGetFirstPoint;
+	m_state = kGetDDAFirstPoint;
 	POSITION pos = GetFirstViewPosition();
-	CddaView* pView = (CddaView*)GetNextView(pos);
+	CbaseView* pView = (CbaseView*)GetNextView(pos);
 	pView->getPoint(this);
 }
 
-void CddaDoc::onGetPoint(const CGePoint& pnt)
+void CbaseDoc::OnLineBresenham()
 {
-	if (m_state == kGetFirstPoint)
+	m_state = kGetBresenhamFirstPoint;
+	POSITION pos = GetFirstViewPosition();
+	CbaseView* pView = (CbaseView*)GetNextView(pos);
+	pView->getPoint(this);
+}
+
+void CbaseDoc::onGetPoint(const CGePoint& pnt)
+{
+	if (m_state == kGetDDAFirstPoint)
 	{
 		m_point = pnt;
 
-		m_state = kGetSecondPoint;
+		m_state = kGetDDASecondPoint;
 		POSITION pos = GetFirstViewPosition();
-		CddaView* pView = (CddaView*)GetNextView(pos);
+		CbaseView* pView = (CbaseView*)GetNextView(pos);
 		pView->getPoint(this);
 	}
-	else if (m_state == kGetSecondPoint)
+	else if (m_state == kGetDDASecondPoint)
 	{
 		m_state = kNone;
-		CDbLine* line = new CDbLine(m_point, pnt);
+		CDbLine* line = new CDbDDALine(m_point, pnt);
+		m_objects.push_back(line);
+		UpdateAllViews(NULL);
+	}
+	else if (m_state == kGetBresenhamFirstPoint)
+	{
+		m_point = pnt;
+
+		m_state = kGetBresenhamSecondPoint;
+		POSITION pos = GetFirstViewPosition();
+		CbaseView* pView = (CbaseView*)GetNextView(pos);
+		pView->getPoint(this);
+	}
+	else if (m_state == kGetBresenhamSecondPoint)
+	{
+		m_state = kNone;
+		CDbLine* line = new CDbBresenhamLine(m_point, pnt);
 		m_objects.push_back(line);
 		UpdateAllViews(NULL);
 	}

@@ -1,11 +1,12 @@
 ﻿//{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ 生成的包含文件。
-// 供 dda.rc 使用
+// 供 base.rc 使用
 //
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
-#define IDR_ddaTYPE                     130
+#define IDR_baseTYPE                     130
 #define ID_LINE_DDA                     32771
+#define ID_LINE_BRESENHAM                     32772
 
 // Next default values for new objects
 // 

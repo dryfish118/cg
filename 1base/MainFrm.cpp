@@ -4,7 +4,7 @@
 
 #include "pch.h"
 #include "framework.h"
-#include "dda.h"
+#include "base.h"
 
 #include "MainFrm.h"
 
