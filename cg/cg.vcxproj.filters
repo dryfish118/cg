@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="inc">
+      <UniqueIdentifier>{7373f1f7-67eb-46c6-bdc2-02f9fea108bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ge">
+      <UniqueIdentifier>{b9bb8dde-1e52-4e8f-ab1c-5235c6aed711}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="gs">
+      <UniqueIdentifier>{7de42183-dd15-453f-8371-e4608da67372}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="db">
+      <UniqueIdentifier>{32677edf-0606-4fe2-9b27-ddd27339c414}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\ge">
+      <UniqueIdentifier>{3ca9d9e7-8a67-4c67-aa83-9692fa2b2622}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\db">
+      <UniqueIdentifier>{4f83636e-fcf8-4600-9a85-f12f3743f16b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="inc\gs">
+      <UniqueIdentifier>{4d9a86a9-3de7-450a-8ada-a55ee69f9c53}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="pch.h" />
+    <ClInclude Include="..\inc\pre.h">
+      <Filter>inc</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\Gs.h">
+      <Filter>inc\gs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\DrawDevice.h">
+      <Filter>inc\gs</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\Db.h">
+      <Filter>inc\db</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\DbLine.h">
+      <Filter>inc\db</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\DbObject.h">
+      <Filter>inc\db</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\Ge.h">
+      <Filter>inc\ge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\GeLine.h">
+      <Filter>inc\ge</Filter>
+    </ClInclude>
+    <ClInclude Include="..\inc\GePoint.h">
+      <Filter>inc\ge</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="ge\GeLine.cpp">
+      <Filter>ge</Filter>
+    </ClCompile>
+    <ClCompile Include="ge\GePoint.cpp">
+      <Filter>ge</Filter>
+    </ClCompile>
+    <ClCompile Include="gs\DrawDevice.cpp">
+      <Filter>gs</Filter>
+    </ClCompile>
+    <ClCompile Include="db\DbLine.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="db\DbObject.cpp">
+      <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="pch.cpp" />
+  </ItemGroup>
+</Project>

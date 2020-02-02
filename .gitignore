@@ -1,3 +1,7 @@
+# Temp files
+*.vcxproj.user
+*.aps
+
 # Prerequisites
 *.d
 
