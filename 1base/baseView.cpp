@@ -163,13 +163,13 @@ void CbaseView::OnLButtonUp(UINT nFlags, CPoint point)
 
 void CbaseView::OnMouseMove(UINT nFlags, CPoint point)
 {
-	if (m_lButtonDown)
-	{
-		OutputDebugString(L"\n OnMouseMove");
-
-		ReleaseCapture();
-		m_lButtonDown = false;
-	}
+// 	if (m_lButtonDown)
+// 	{
+// 		OutputDebugString(L"\n OnMouseMove");
+// 
+// 		ReleaseCapture();
+// 		m_lButtonDown = false;
+// 	}
 
 	CView::OnMouseMove(nFlags, point);
 }

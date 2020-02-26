@@ -4,9 +4,10 @@
 //
 #define IDD_ABOUTBOX                    100
 #define IDR_MAINFRAME                   128
-#define IDR_baseTYPE                     130
-#define ID_LINE_DDA                     32771
-#define ID_LINE_BRESENHAM                     32772
+#define IDR_baseTYPE                    130
+#define ID_CLEAR_CLEAR                  32771
+#define ID_LINE_DDA                     32772
+#define ID_LINE_BRESENHAM               32773
 
 // Next default values for new objects
 // 

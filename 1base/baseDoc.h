@@ -63,4 +63,7 @@ protected:
 public:
 	afx_msg void OnLineDDA();
 	afx_msg void OnLineBresenham();
+	afx_msg void OnClearClear();
+
+	void clear();
 };

@@ -25,6 +25,7 @@ IMPLEMENT_DYNCREATE(CbaseDoc, CDocument)
 BEGIN_MESSAGE_MAP(CbaseDoc, CDocument)
 	ON_COMMAND(ID_LINE_DDA, &CbaseDoc::OnLineDDA)
 	ON_COMMAND(ID_LINE_BRESENHAM, &CbaseDoc::OnLineBresenham)
+	ON_COMMAND(ID_CLEAR_CLEAR, &CbaseDoc::OnClearClear)
 END_MESSAGE_MAP()
 
 
@@ -39,11 +40,7 @@ CbaseDoc::CbaseDoc() noexcept
 
 CbaseDoc::~CbaseDoc()
 {
-	for (ObjectIt it = m_objects.begin(); it != m_objects.end(); it++)
-	{
-		delete *it;
-	}
-	m_objects.clear();
+	clear();
 }
 
 BOOL CbaseDoc::OnNewDocument()
@@ -57,8 +54,14 @@ BOOL CbaseDoc::OnNewDocument()
 	return TRUE;
 }
 
-
-
+void CbaseDoc::clear()
+{
+	for (ObjectIt it = m_objects.begin(); it != m_objects.end(); it++)
+	{
+		delete *it;
+	}
+	m_objects.clear();
+}
 
 // CbaseDoc 序列化
 
@@ -195,4 +198,11 @@ void CbaseDoc::onGetPoint(const CGePoint& pnt)
 		m_objects.push_back(line);
 		UpdateAllViews(NULL);
 	}
+}
+
+
+void CbaseDoc::OnClearClear()
+{
+	clear();
+	UpdateAllViews(NULL);
 }
