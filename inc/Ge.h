@@ -3,6 +3,7 @@
 
 #include "pre.h"
 #include "GePoint.h"
+#include "GeVector.h"
 #include "GeLine.h"
 
 #endif

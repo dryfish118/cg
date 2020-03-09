@@ -15,3 +15,12 @@ CGePoint::CGePoint(double x, double y)
 {
 
 }
+
+CGePoint CGePoint::operator+(const CGeVector& v) const
+{
+	CGePoint p;
+	p.m_x = m_x + v.m_x;
+	p.m_y = m_y + v.m_y;
+
+	return p;
+}

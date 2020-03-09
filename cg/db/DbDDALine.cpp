@@ -38,7 +38,7 @@ void CDbDDALine::onDraw(CDrawDevice* dd)
 	double delta_y = dy / steps;
 	for (int i = 0; i < steps; i++)
 	{
-		dd->drawPoint(x, y);
+		dd->drawPoint(this, x, y);
 		x += delta_x;
 		y += delta_y;
 	}

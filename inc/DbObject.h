@@ -5,8 +5,29 @@
 
 class CG_EXPORT CDbObject
 {
+	int m_color;
 public:
+	CDbObject();
 	virtual ~CDbObject();
+
+	void setColor(int c);
+	int color() const;
+
+	enum Color
+	{
+		eColorBlack = 0,
+		eColorRed,
+		eColorLime,
+		eColorGreen,
+		eColorBlue,
+		eColorPink,
+		eColorYellow,
+		eColorOlive,
+		eColorOrange,
+		eColorCyan,
+		eColorFuchsia,
+	};
+
 
 	virtual void onDraw(CDrawDevice* dd) = 0;
 };

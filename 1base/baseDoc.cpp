@@ -48,8 +48,41 @@ BOOL CbaseDoc::OnNewDocument()
 	if (!CDocument::OnNewDocument())
 		return FALSE;
 
-	// TODO: 在此添加重新初始化代码
-	// (SDI 文档将重用该文档)
+	CDbLine* line;
+	
+	CGePoint cen(50, 50);
+
+	line = new CDbBresenhamLine(cen, cen + CGeVector(10, 0));
+	line->setColor(CDbObject::eColorBlack);
+	m_objects.push_back(line);
+
+	line = new CDbBresenhamLine(cen, cen + CGeVector(0, 5));
+	line->setColor(CDbObject::eColorRed);
+	m_objects.push_back(line);
+
+	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, 0));
+	line->setColor(CDbObject::eColorYellow);
+	m_objects.push_back(line);
+
+	line = new CDbBresenhamLine(cen, cen + CGeVector(0, -5));
+	line->setColor(CDbObject::eColorGreen);
+	m_objects.push_back(line);
+
+	line = new CDbBresenhamLine(cen, cen + CGeVector(10, 5));
+	line->setColor(CDbObject::eColorBlue);
+	m_objects.push_back(line);
+
+	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, 5));
+	line->setColor(CDbObject::eColorPink);
+	m_objects.push_back(line);
+
+	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, -5));
+	line->setColor(CDbObject::eColorLime);
+	m_objects.push_back(line);
+
+	line = new CDbBresenhamLine(cen, cen + CGeVector(10, -5));
+	line->setColor(CDbObject::eColorOlive);
+	m_objects.push_back(line);
 
 	return TRUE;
 }

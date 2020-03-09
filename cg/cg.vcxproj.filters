@@ -58,6 +58,9 @@
     <ClInclude Include="..\inc\DbDDALine.h">
       <Filter>inc\db</Filter>
     </ClInclude>
+    <ClInclude Include="..\inc\GeVector.h">
+      <Filter>inc\ge</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="ge\GeLine.cpp">
@@ -81,6 +84,9 @@
     </ClCompile>
     <ClCompile Include="db\DbDDALine.cpp">
       <Filter>db</Filter>
+    </ClCompile>
+    <ClCompile Include="ge\GeVector.cpp">
+      <Filter>ge</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

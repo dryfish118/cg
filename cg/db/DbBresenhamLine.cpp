@@ -44,7 +44,7 @@ void CDbBresenhamLine::onDraw(CDrawDevice* dd)
 		double const2 = 2 * (dy - dx);
 		double x = x1,
 			y = y1;
-		dd->drawPoint(x, y);
+		dd->drawPoint(this, x, y);
 		while (x < x2)
 		{
 			x += 1;
@@ -57,7 +57,7 @@ void CDbBresenhamLine::onDraw(CDrawDevice* dd)
 				p += const2;
 				y += inc;
 			}
-			dd->drawPoint(x, y);
+			dd->drawPoint(this, x, y);
 		}
 	}
 	else
@@ -67,7 +67,7 @@ void CDbBresenhamLine::onDraw(CDrawDevice* dd)
 		double const2 = 2 * (dx - dy);
 		double x = x1,
 			y = y1;
-		dd->drawPoint(x, y);
+		dd->drawPoint(this, x, y);
 		while (y < y2)
 		{
 			y += 1;
@@ -80,7 +80,7 @@ void CDbBresenhamLine::onDraw(CDrawDevice* dd)
 				p += const2;
 				x += inc;
 			}
-			dd->drawPoint(x, y);
+			dd->drawPoint(this, x, y);
 		}
 	}
 }
