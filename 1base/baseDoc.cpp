@@ -52,34 +52,82 @@ BOOL CbaseDoc::OnNewDocument()
 	
 	CGePoint cen(50, 50);
 
+	// 0
 	line = new CDbBresenhamLine(cen, cen + CGeVector(10, 0));
 	line->setColor(CDbObject::eColorBlack);
 	m_objects.push_back(line);
 
-	line = new CDbBresenhamLine(cen, cen + CGeVector(0, 5));
-	line->setColor(CDbObject::eColorRed);
-	m_objects.push_back(line);
-
-	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, 0));
-	line->setColor(CDbObject::eColorYellow);
-	m_objects.push_back(line);
-
-	line = new CDbBresenhamLine(cen, cen + CGeVector(0, -5));
-	line->setColor(CDbObject::eColorGreen);
-	m_objects.push_back(line);
-
+	// 30
 	line = new CDbBresenhamLine(cen, cen + CGeVector(10, 5));
 	line->setColor(CDbObject::eColorBlue);
 	m_objects.push_back(line);
 
+	// 45
+	line = new CDbBresenhamLine(cen, cen + CGeVector(10, 10));
+	line->setColor(CDbObject::eColorBlue);
+	m_objects.push_back(line);
+
+	// 60
+	line = new CDbBresenhamLine(cen, cen + CGeVector(5, 10));
+	line->setColor(CDbObject::eColorBlue);
+	m_objects.push_back(line);
+
+	// 90
+	line = new CDbBresenhamLine(cen, cen + CGeVector(0, 10));
+	line->setColor(CDbObject::eColorBlack);
+	m_objects.push_back(line);
+
+	// 120
+	line = new CDbBresenhamLine(cen, cen + CGeVector(-5, 10));
+	line->setColor(CDbObject::eColorPink);
+	m_objects.push_back(line);
+
+	// 135
+	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, 10));
+	line->setColor(CDbObject::eColorPink);
+	m_objects.push_back(line);
+
+	// 150
 	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, 5));
 	line->setColor(CDbObject::eColorPink);
 	m_objects.push_back(line);
 
+	// 180
+	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, 0));
+	line->setColor(CDbObject::eColorBlack);
+	m_objects.push_back(line);
+
+	// 210
 	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, -5));
 	line->setColor(CDbObject::eColorLime);
 	m_objects.push_back(line);
 
+	// 225
+	line = new CDbBresenhamLine(cen, cen + CGeVector(-10, -10));
+	line->setColor(CDbObject::eColorLime);
+	m_objects.push_back(line);
+
+	// 240
+	line = new CDbBresenhamLine(cen, cen + CGeVector(-5, -10));
+	line->setColor(CDbObject::eColorLime);
+	m_objects.push_back(line);
+
+	// 270
+	line = new CDbBresenhamLine(cen, cen + CGeVector(0, -10));
+	line->setColor(CDbObject::eColorBlack);
+	m_objects.push_back(line);
+
+ 	// 300
+	line = new CDbBresenhamLine(cen, cen + CGeVector(5, -10));
+	line->setColor(CDbObject::eColorOlive);
+	m_objects.push_back(line);
+
+	// 315
+	line = new CDbBresenhamLine(cen, cen + CGeVector(10, -10));
+	line->setColor(CDbObject::eColorOlive);
+	m_objects.push_back(line);
+
+	// 330
 	line = new CDbBresenhamLine(cen, cen + CGeVector(10, -5));
 	line->setColor(CDbObject::eColorOlive);
 	m_objects.push_back(line);

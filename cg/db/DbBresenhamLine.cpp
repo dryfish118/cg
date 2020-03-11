@@ -19,12 +19,11 @@ void CDbBresenhamLine::onDraw(CDrawDevice* dd)
 		y1 = m_line.m_start.m_y,
 		x2 = m_line.m_end.m_x,
 		y2 = m_line.m_end.m_y;
-	double dx = x2 - x1;
-	double dy = y2 - y1;
-	int inc = (dx * dy >= 0) ? 1 : -1;
+	double dx = fabs(x2 - x1);
+	double dy = fabs(y2 - y1);
+	int inc = ((x2 - x1) * (y2 - y1) >= 0) ? 1 : -1;
 
-	if ((fabs(dx) > fabs(dy) && dx < 0) ||
-		(fabs(dx) <= fabs(dy) && dy < 0))
+	if ((dx > dy) ? (x2 < x1) : (y2 < y1))
 	{
 		double tmp = x1;
 		x1 = x2;
@@ -32,12 +31,9 @@ void CDbBresenhamLine::onDraw(CDrawDevice* dd)
 		tmp = y1;
 		y1 = y2;
 		y2 = tmp;
-
-		dx = -dx;
-		dy = -dy;
 	}
 
-	if (fabs(dx) > fabs(dy))
+	if (dx > dy)
 	{
 		double p = 2 * dy - dx;
 		double const1 = 2 * dy;
